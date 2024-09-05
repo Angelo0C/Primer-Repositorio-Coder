@@ -1,4 +1,23 @@
-/* RESET */
+/* unidades de medida */
+
+
+/* ambas 2 son unidades relativas */
+
+
+/* rem , 1 rem : a 16px*/
+/* div{
+    font-size: 20px;
+}
+
+h1{
+    font-size: 2rem;
+} */
+
+/* em */
+/* h1{
+    font-size: 2em;
+} */
+
 
 *{
     margin: 0;
@@ -7,121 +26,99 @@
 }
 
 
-/* propiedades del contenedor */
-.contenedor{
-    height: 500px;
-    background-color: tomato;
-    margin: 30px;
+/* estilos generales */
 
-    /* propiedad base de grid */
-
-    display: grid;
-
-/* propiedad para las filas */
-
-grid-template-rows: 30% 70%;
-
-/* propiedad de las columnas */
-
-grid-template-columns: repeat(4, 1fr) ;
-
-
-/* gap */
-
-gap: 10px 30px;
-
-/* gap para rows */
-
-/* row-gap: 10px; */
-
-/* gap para columns */
-
-/* column-gap: 30px; */
-
+body{
+    background-color: #0E0D0D;
 }
 
-/* propiedades de los items */
-
-.contenedor .items {
-    border: 2px solid black;
-}
-
-
-
-/* estilso ejemplo 2 */
-
-.ejemplo{
-    height: 500px;
-    padding: 50px;
-    background-color: tomato;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2 , 1fr);
-    /* alineacion desde el contendor */
-    justify-items: center;
-    align-items: center;
-}
-
-/* propiedades de los items */
-
-.ejemplo .div-uno{
-    /* alineacion desde el item */
-
-    justify-self: start;
-    align-self: end;
-}
-
-/* ejemplo3 */
-
-
-
-/* estilos de container */
-
-.container{
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(3, 2fr) 1.5fr ;
-    grid-template-rows: 10% 30% 30% 20% 10% ;
-
-    /* estructura por areas */
-    grid-template-areas:
-     "header header header header" 
-     "main main main aside"
-     "main main main aside"
-     "section section section section"
-     "footer footer footer footer";
-}
-
-
-/* estilos de los items */
-
+/* ESTILOS DE MOBILE */
 header{
-    background-color: orangered;
-    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
+
 header nav ul{
+    color: whitesmoke;
     list-style: none;
-display: flex;
-justify-content: center;
-gap: 30px;
-
+    display: flex;
+    gap: 1.5rem;
+    padding-right: 20px;
 }
+
+/* estilos de main */
+
 main{
-    background-color: orange;
-    grid-area: main;
+    height: 70vh;
+    margin: 30px 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 23%);
+    row-gap: 1.5rem;
+    align-content: center;
 }
 
-section{
-    background-color: tomato;
-    grid-area: section;
+
+main div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+main .img-dos, main .img-cinco{
+    display: none;
+    
 
 }
 
-aside{
-    background-color: red;
-    grid-area: aside;
-}
+/* estilos de footer */
+
 footer{
-    background-color: rgb(118, 0, 0);
-     grid-area: footer ;
+    text-align: center;
+    color: whitesmoke;
+}
+
+/* estilos de tablet */
+
+@media screen and (min-width:600px){
+/* estilos de main */
+main{
+grid-template-columns: repeat(2, 1fr) ;
+grid-template-rows: repeat(2, 50%);
+column-gap: 1.5rem;
+
+}
+
+main .img-cuatro{
+    grid-column: span 2;
+}
+}
+
+/* estilos de desktop */
+@media screen and (min-width: 1024px) {
+    
+    main .img-dos, main .img-cinco{
+        display: block;
+    }
+    
+    main{
+        grid-template-columns: repeat(3,1fr) ;
+        grid-template-rows: 30% 30% 20% ;
+
+    }
+
+    main .img-uno, main .img-tres{
+        grid-row: span 2;
+    }
+
+    main .img-dos, main .img-cuatro {
+        grid-column: span 1;
+    }
+
+    main .img-cinco{
+        grid-column: span 3;
+    }
 }
